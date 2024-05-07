@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vivian Studios - Landing Page
 
-## Getting Started
+## This is a landing page built using next for a video production company.
 
-First, run the development server:
+# Inspirations -
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+https://haspr.in/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+https://www.goodie.work/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+https://sussextaps.com.au/
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![alt text](https://res.cloudinary.com/dsuiwxwkg/image/upload/v1714974245/vivianStudios/full_view_ediola.png)
 
-## Learn More
+# Tasks
 
-To learn more about Next.js, take a look at the following resources:
+1. Skeleton for Homepage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   - setup error boundary
+   - loading
+   - not found
+   - routes
+   - components
+   -
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Navbar Top
 
-## Deploy on Vercel
+   - Burger Menu
+   - Logo
+   -
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Hero Banner
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   - title
+   - compilation
+
+4. Navbar Center
+
+   - mouse hover animation
+
+5. Location & Best time to call
+
+   -
+
+6. Reveal Showreel.
+
+   - title
+   - video
+   - scrub effect
+
+7. Project card
+
+   - Video
+   - title change
+
+8. Projects
+
+   - div being stuck when scroll reaches view height
+   - scroll direction change
+   - background color change on card change
+   - view more projects
+
+9. Logo reveal
+
+   - try 3d scroll
+   - try frame change as backup
+
+10. CTA
+
+    - background animatin
+    - on scroll message reveal
+
+11. Footer
+
+12. Responsive Hero Banner Parallax
+
+13. Overall Responsiveness
+
+14. Services Page
+
+15. About Page
+
+16. Blog Page
+
+17. Single Blog Page
+
+18. Projects Page
+
+19. Single Project Page
+
+20. CMS - Blog Page
+
+21. CMS - Portfolio Page

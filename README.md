@@ -14,20 +14,15 @@ https://sussextaps.com.au/
 
 # Tasks
 
-1. Skeleton for Homepage
-
-   - setup error boundary
-   - loading
-   - not found
-   - routes
-   - components
-   -
-
 2. Navbar Top
 
    - Burger Menu
+     animation
    - Logo
-   -
+   - wide menu
+
+   Resources -
+   https://jsfiddle.net/xcWge/14/
 
 3. Hero Banner
 
@@ -91,3 +86,14 @@ https://sussextaps.com.au/
 20. CMS - Blog Page
 
 21. CMS - Portfolio Page
+
+## Done
+
+1. Skeleton for Homepage
+
+   - setup error boundary
+   - loading
+   - not found
+   - routes
+   - components
+   -

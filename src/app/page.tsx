@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import HeroBanner from "./components/HeroBanner";
 import NavbarCenter from "./components/NavbarCenter";
@@ -7,11 +8,14 @@ import ProjectCard from "./components/ProjectCard";
 import LogoReveal from "./components/LogoReveal";
 import CallToAction from "./components/CallToAction";
 
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 
 import ErrorBoundary from "./error";
+import useProjectsDistance from "./hooks/projectsDistance";
 
 export default function Home() {
+  const ref = useRef<HTMLDivElement | null>(null);
+
   return (
     <>
       <ErrorBoundary>
@@ -21,8 +25,9 @@ export default function Home() {
         <Suspense fallback={<>Loading...</>}>
           <RevealShowreel />
         </Suspense>
+        {/* <div className={`${distance < 0 ? "sticky top-0" : ""} `}> */}
+
         <ProjectList>
-          <ProjectCard></ProjectCard>
           <ProjectCard></ProjectCard>
         </ProjectList>
         <Suspense fallback={<>Loading...</>}>

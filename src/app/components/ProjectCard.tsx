@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type ProjectCardProps = {};
 
@@ -7,6 +7,7 @@ import buskaro from "@/app/assets/bus-karo.png";
 import carService from "@/app/assets/car-service.png";
 import khajuraho from "@/app/assets/khajuraho.png";
 import useLogoRevealDistance from "../hooks/logoRevealDistance";
+import useProjectsContainerWidth from "../hooks/projectsContainerWidth";
 
 interface IProject {
   name: string;
@@ -36,19 +37,39 @@ const projects: IProject[] = [
 const ProjectCard: React.FC<ProjectCardProps> = () => {
   const { logoRevealDistance }: any = useLogoRevealDistance();
 
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const setProjectsContainerWidth = useProjectsContainerWidth(
+    (state: any) => state.setProjectsContainerWidth
+  );
+
+  const [positionAdjustment, setPositionAdjustment] = useState<number>(0);
+
+  useEffect(() => {
+    const card: any = cardRef?.current?.getBoundingClientRect();
+    if (card) {
+      setPositionAdjustment(card.width * projects.length);
+      setProjectsContainerWidth(card.width * projects.length);
+    }
+  }, []);
+
+  console.log(logoRevealDistance - positionAdjustment);
+
   return (
     <div
       style={{
-        transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ${logoRevealDistance}, 0, 0, 1)`,
+        transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ${
+          logoRevealDistance - positionAdjustment
+        }, 0, 0, 1)`,
       }}
-      className={`flex `}
+      className={`flex`}
     >
       {projects.map((project) => (
-        <div className="z-0">
+        <div ref={cardRef} className="z-0  mr-[3vw]">
           <Image
             src={project.thumbnail}
             alt={`${project.name} image`}
-            className={`relative  w-[20vw] m-[5vw]`}
+            className={`relative w-[50vw] mr-[30vw] mt-[20vh]`}
           />
           <p className="absolute">{project.name}</p>
         </div>

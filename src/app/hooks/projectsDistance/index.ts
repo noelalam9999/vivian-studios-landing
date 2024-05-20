@@ -1,11 +1,13 @@
 import { create } from "zustand";
+import { mountStoreDevtool } from "simple-zustand-devtools";
 
 const useProjectsDistance = create((set) => ({
-  distance: 0,
+  projectsDistance: 0,
   setProjectsDistance: (distance: number) =>
     set(() => ({
-      distance: distance,
+      projectsDistance: distance,
     })),
 }));
 
+mountStoreDevtool("Projects Distance", useProjectsDistance);
 export default useProjectsDistance;

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { mountStoreDevtool } from "simple-zustand-devtools";
 
 const useLogoRevealDistance = create((set) => ({
   logoRevealDistance: 0,

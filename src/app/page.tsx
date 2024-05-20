@@ -12,10 +12,9 @@ import { Suspense, useRef } from "react";
 
 import ErrorBoundary from "./error";
 import useProjectsDistance from "./hooks/projectsDistance";
+import NonStickyProjectList from "./components/NonStickyProjectList";
 
 export default function Home() {
-  const ref = useRef<HTMLDivElement | null>(null);
-
   return (
     <>
       <ErrorBoundary>
@@ -31,7 +30,11 @@ export default function Home() {
           <ProjectCard></ProjectCard>
         </ProjectList>
         <Suspense fallback={<>Loading...</>}>
-          <LogoReveal></LogoReveal>
+          <LogoReveal>
+            <NonStickyProjectList>
+              <ProjectCard></ProjectCard>
+            </NonStickyProjectList>
+          </LogoReveal>
         </Suspense>
         <CallToAction></CallToAction>
       </ErrorBoundary>

@@ -1,13 +1,4 @@
-import React, {
-  MutableRefObject,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import useProjectsDistance from "../hooks/projectsDistance";
-import useLogoRevealDistance from "../hooks/logoRevealDistance";
-import useRevealShowreelBottom from "../hooks/revealShowreelBottom";
+import React, { MutableRefObject, ReactNode } from "react";
 
 type ProjectListProps = {
   props: "";
@@ -22,7 +13,7 @@ interface Props {
 // export type Ref = MutableRefObject<null | HTMLDivElement>;
 
 const NonStickyProjectList = React.forwardRef<HTMLDivElement | null, Props>(
-  (props) => {
+  (props, _) => {
     return (
       <>
         <div

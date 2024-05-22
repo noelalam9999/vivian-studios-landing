@@ -8,42 +8,52 @@ import carService from "@/app/assets/car-service.png";
 import khajuraho from "@/app/assets/khajuraho.png";
 import useLogoRevealDistance from "../hooks/logoRevealDistance";
 import useProjectsContainerWidth from "../hooks/projectsContainerWidth";
+import useProjectsDistance from "../hooks/projectsDistance";
+import { calculateBgColorChangeRanges } from "../utils/calculateBgColorChangeRanges";
+import { IProject } from "../interfaces/IProject";
+import useProjectBreakpoints from "../hooks/breakpoints";
 
-interface IProject {
-  name: string;
-  subtitle: string;
-  thumbnail: StaticImageData | string;
-}
-
-const projects: IProject[] = [
+export const projects: IProject[] = [
   {
+    id: 1,
     name: "Khajuraho",
     subtitle: "A 3D virtual tour of khajuraho ",
     thumbnail: khajuraho,
+    bgColor: "#000000",
   },
   {
+    id: 2,
     name: "Schoolbus Karo",
     subtitle:
       "Live tracking bus service with safety features to ensure child safety",
     thumbnail: buskaro,
+    bgColor: "#187c7d",
   },
   {
+    id: 3,
     name: "Innovative Service Center",
     subtitle: "Complete cars and bus service",
     thumbnail: carService,
+    bgColor: "#BDBDBD",
   },
 ];
 
 const ProjectCard: React.FC<ProjectCardProps> = () => {
   const { logoRevealDistance }: any = useLogoRevealDistance();
+  const { projectsDistance }: any = useProjectsDistance();
+  const [positionAdjustment, setPositionAdjustment] = useState<number>(0);
+
+  const [startLine, setStartLine] = useState<number>(0);
 
   const cardRef = useRef<HTMLDivElement>(null);
+
+  const setBreakpoints = useProjectBreakpoints(
+    (state: any) => state.setBreakpoints
+  );
 
   const setProjectsContainerWidth = useProjectsContainerWidth(
     (state: any) => state.setProjectsContainerWidth
   );
-
-  const [positionAdjustment, setPositionAdjustment] = useState<number>(0);
 
   useEffect(() => {
     const card: any = cardRef?.current?.getBoundingClientRect();
@@ -53,7 +63,20 @@ const ProjectCard: React.FC<ProjectCardProps> = () => {
     }
   }, []);
 
-  console.log(logoRevealDistance - positionAdjustment);
+  useEffect(() => {
+    if (projectsDistance <= 0 && logoRevealDistance > 0 && startLine === 0) {
+      const card: any = cardRef?.current?.getBoundingClientRect();
+      const breakpoints = calculateBgColorChangeRanges(
+        logoRevealDistance,
+        projects,
+        card.width
+      );
+      // console.log(breakpoints);
+      setBreakpoints(breakpoints);
+
+      setStartLine(logoRevealDistance);
+    }
+  }, [projectsDistance, logoRevealDistance]);
 
   return (
     <div

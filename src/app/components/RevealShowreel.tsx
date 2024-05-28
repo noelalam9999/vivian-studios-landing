@@ -12,7 +12,6 @@ const RevealShowreel: React.FC<RevealShowreelProps> = () => {
 
   function handleScroll() {
     const revealShowreel = ref?.current?.getBoundingClientRect();
-    // console.log(revealShowreel?.bottom);
     setRevealShowreelBottom(revealShowreel?.bottom);
   }
 

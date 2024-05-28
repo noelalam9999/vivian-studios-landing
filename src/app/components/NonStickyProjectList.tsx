@@ -1,4 +1,5 @@
 import React, { MutableRefObject, ReactNode } from "react";
+import { projects } from "./ProjectCard";
 
 type ProjectListProps = {
   props: "";
@@ -17,6 +18,7 @@ const NonStickyProjectList = React.forwardRef<HTMLDivElement | null, Props>(
     return (
       <>
         <div
+          style={{ backgroundColor: projects[projects.length - 1]?.bgColor }}
           className={` 
              
                  overflow-y-auto 

@@ -26,12 +26,12 @@ https://sussextaps.com.au/
 
 3. Hero Banner
 
-   - title
-   - compilation
+   - title (done)
+   - compilation (done)
 
 4. Navbar Center
 
-   - mouse hover animation
+   - mouse hover animation (done)
 
 5. Location & Best time to call
 
@@ -45,14 +45,14 @@ https://sussextaps.com.au/
 
 7. Project card
 
-   - Video
-   - title change
+   - Video (done)
+   - title change (done)
 
 8. Projects
 
-   - div being stuck when scroll reaches view height
-   - scroll direction change
-   - background color change on card change
+   - div being stuck when scroll reaches view height (done)
+   - scroll direction change (done)
+   - background color change on card change (done)
    - view more projects
 
 9. Logo reveal
@@ -62,7 +62,7 @@ https://sussextaps.com.au/
 
 10. CTA
 
-    - background animatin
+    - background animation
     - on scroll message reveal
 
 11. Footer

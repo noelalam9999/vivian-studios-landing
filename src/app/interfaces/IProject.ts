@@ -6,4 +6,5 @@ export interface IProject {
   subtitle: string;
   thumbnail: StaticImageData | string;
   bgColor: string;
+  asset?: string;
 }

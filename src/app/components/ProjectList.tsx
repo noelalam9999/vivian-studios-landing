@@ -4,11 +4,6 @@ import useLogoRevealDistance from "../hooks/logoRevealDistance";
 import useActiveProject from "../hooks/activeProject";
 import { projects } from "./ProjectCard";
 
-type ProjectListProps = {
-  props: "";
-  ref: MutableRefObject<HTMLElement>;
-};
-
 interface Props {
   children: ReactNode;
 }
@@ -27,7 +22,6 @@ const ProjectList = React.forwardRef<HTMLDivElement | null, Props>(
 
     const { activeProject }: any = useActiveProject();
 
-    // console.log(activeProject);
     function handleScroll() {
       const top = ref?.current?.getBoundingClientRect();
       setProjectsDistance(top?.top);
@@ -42,12 +36,14 @@ const ProjectList = React.forwardRef<HTMLDivElement | null, Props>(
       };
     }, []);
 
-    console.log(projects[activeProject]?.bgColor);
-
     return (
       <>
         <div
-          style={{ backgroundColor: projects[activeProject - 1]?.bgColor }}
+          style={
+            activeProject
+              ? { backgroundColor: projects[activeProject - 1]?.bgColor }
+              : { backgroundColor: "#000000" }
+          }
           className={` 
                  ${
                    projectsDistance <= 0 && logoRevealDistance > 0
@@ -56,7 +52,7 @@ const ProjectList = React.forwardRef<HTMLDivElement | null, Props>(
                  }
                  overflow-y-auto 
                  w-screen h-screen  
-                 overflow-x-hidden z-0 no-scrollbar transition-colors duration-500`}
+                 overflow-x-hidden z-0 no-scrollbar transition-colors duration-500 `}
           ref={ref}
           // onScroll={props.handleScroll}
         >

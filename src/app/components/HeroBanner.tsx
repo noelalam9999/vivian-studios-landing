@@ -1,9 +1,4 @@
-import React, {
-  ElementType,
-  ReactNode,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import React, { ReactNode, useImperativeHandle, useRef } from "react";
 
 type HeroBannerProps = {
   children: ReactNode;

@@ -1,9 +1,10 @@
 import { IBreakpoints } from "../interfaces/IBreakpoints";
 import { IProject } from "../interfaces/IProject";
+import { IPortfolio } from "./portfolioList";
 
 export function calculateBgColorChangeRanges(
   startLine: number,
-  cards: IProject[],
+  cards: IPortfolio[],
   cardWidth: number
 ): IBreakpoints {
   let breakpoints: IBreakpoints = {};

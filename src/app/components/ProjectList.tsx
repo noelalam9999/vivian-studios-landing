@@ -2,7 +2,7 @@ import React, { MutableRefObject, ReactNode, useEffect, useRef } from "react";
 import useProjectsDistance from "../hooks/projectsDistance";
 import useLogoRevealDistance from "../hooks/logoRevealDistance";
 import useActiveProject from "../hooks/activeProject";
-import { projects } from "./ProjectCard";
+import { portfolioList } from "../utils/portfolioList";
 
 interface Props {
   children: ReactNode;
@@ -12,11 +12,8 @@ const ProjectList = React.forwardRef<HTMLDivElement | null, Props>(
   (props, _) => {
     const ref = useRef<HTMLDivElement>(null);
 
-    const setProjectsDistance = useProjectsDistance(
-      (state: any) => state.setProjectsDistance
-    );
-
-    const { projectsDistance }: any = useProjectsDistance();
+    const { projectsDistance, setProjectsDistance }: any =
+      useProjectsDistance();
 
     const { logoRevealDistance }: any = useLogoRevealDistance();
 
@@ -41,7 +38,10 @@ const ProjectList = React.forwardRef<HTMLDivElement | null, Props>(
         <div
           style={
             activeProject
-              ? { backgroundColor: projects[activeProject - 1]?.bgColor }
+              ? {
+                  backgroundColor:
+                    portfolioList[activeProject - 1]?.backgroundColor,
+                }
               : { backgroundColor: "#000000" }
           }
           className={` 

@@ -15,7 +15,7 @@ const HeroBanner = React.forwardRef<HTMLDivElement | null, Props>(
     return (
       <div
         ref={innerRef}
-        className="flex  items-center h-[90vh] flex-col bg-black  "
+        className="flex w-screen items-center h-[90vh] justify-center flex-col bg-black  z-0"
       >
         <div className="grid grid-cols-2 w-[75vw] mt-[10vh] ">
           <div className="transition ease-in-out delay-650 flex text-[7.35vw] font-averta items-center text-white leading-12">

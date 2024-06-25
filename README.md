@@ -71,7 +71,7 @@ https://sussextaps.com.au/
 
 13. Overall Responsiveness
 
-14. Services Page
+14. Services Page - Animation, VFX, AR/VR, Video Editing and Motion Graphics, Image Post-production 
 
 15. About Page
 
@@ -86,6 +86,8 @@ https://sussextaps.com.au/
 20. CMS - Blog Page
 
 21. CMS - Portfolio Page
+
+22. Service
 
 ## Done
 

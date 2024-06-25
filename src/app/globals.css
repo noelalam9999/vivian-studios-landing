@@ -35,6 +35,9 @@ video {
   .text-balance {
     text-wrap: balance;
   }
+  ::-webkit-scrollbar-track {
+    background: orange; /* color of the tracking area */
+  }
 }
 
 @font-face {

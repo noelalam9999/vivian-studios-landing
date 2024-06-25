@@ -1,24 +1,20 @@
 import React, { MutableRefObject, ReactNode } from "react";
-import { projects } from "./ProjectCard";
-
-type ProjectListProps = {
-  props: "";
-  ref: MutableRefObject<HTMLElement>;
-};
+import { portfolioList } from "../utils/portfolioList";
 
 interface Props {
   children: ReactNode;
   // handleScroll: () => void;
 }
 
-// export type Ref = MutableRefObject<null | HTMLDivElement>;
-
 const NonStickyProjectList = React.forwardRef<HTMLDivElement | null, Props>(
   (props, _) => {
     return (
       <>
         <div
-          style={{ backgroundColor: projects[projects.length - 1]?.bgColor }}
+          style={{
+            backgroundColor:
+              portfolioList[portfolioList.length - 1]?.backgroundColor,
+          }}
           className={` 
              
                  overflow-y-auto 

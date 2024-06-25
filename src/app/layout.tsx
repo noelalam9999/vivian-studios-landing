@@ -4,6 +4,8 @@ import "./globals.css";
 import NavbarTop from "./components/NavbarTop";
 import Footer from "./components/Footer";
 import { useRef } from "react";
+import CollapsibleMenu from "./components/CollapsibleMenu";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +21,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <Head>
+        <style>{`
+          
+
+            
+       ::-webkit-scrollbar-track {
+  background: orange;
+}
+          }
+          `}</style>
+      </Head>
+      <body className={`${inter.className} overflow-x-hidden relative `}>
         <NavbarTop />
+        <CollapsibleMenu />
         {children}
         <Footer></Footer>
       </body>

@@ -1,44 +1,16 @@
-import Image, { StaticImageData } from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
 type ProjectCardProps = {};
-
-import buskaro from "@/app/assets/bus-karo.png";
-import carService from "@/app/assets/car-service.png";
-import khajuraho from "@/app/assets/khajuraho.png";
 
 import useLogoRevealDistance from "../hooks/logoRevealDistance";
 import useProjectsContainerWidth from "../hooks/projectsContainerWidth";
 import useProjectsDistance from "../hooks/projectsDistance";
 import { calculateBgColorChangeRanges } from "../utils/calculateBgColorChangeRanges";
-import { IProject } from "../interfaces/IProject";
+
 import useProjectBreakpoints from "../hooks/breakpoints";
 import useActiveProject from "../hooks/activeProject";
 
-export const projects: IProject[] = [
-  {
-    id: 1,
-    name: "Khajuraho",
-    subtitle: "A 3D virtual tour of khajuraho ",
-    thumbnail: khajuraho,
-    bgColor: "#e49653",
-  },
-  {
-    id: 2,
-    name: "Schoolbus Karo",
-    subtitle:
-      "Live tracking bus service with safety features to ensure child safety",
-    thumbnail: buskaro,
-    bgColor: "#187c7d",
-  },
-  {
-    id: 3,
-    name: "Innovative Service Center",
-    subtitle: "Complete cars and bus service",
-    thumbnail: carService,
-    bgColor: "#BDBDBD",
-  },
-];
+import { portfolioList } from "../utils/portfolioList";
 
 const ProjectCard: React.FC<ProjectCardProps> = () => {
   const { logoRevealDistance }: any = useLogoRevealDistance();
@@ -49,7 +21,7 @@ const ProjectCard: React.FC<ProjectCardProps> = () => {
   const [startLine, setStartLine] = useState<number>(0);
 
   const cardRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>({} as HTMLVideoElement);
+  const videoRef: any = {};
 
   const setBreakpoints = useProjectBreakpoints(
     (state: any) => state.setBreakpoints
@@ -62,8 +34,8 @@ const ProjectCard: React.FC<ProjectCardProps> = () => {
   useEffect(() => {
     const card: any = cardRef?.current?.getBoundingClientRect();
     if (card) {
-      setPositionAdjustment(card.width * projects.length);
-      setProjectsContainerWidth(card.width * projects.length);
+      setPositionAdjustment(card.width * portfolioList.length);
+      setProjectsContainerWidth(card.width * portfolioList.length);
     }
   }, []);
 
@@ -72,7 +44,7 @@ const ProjectCard: React.FC<ProjectCardProps> = () => {
       const card: any = cardRef?.current?.getBoundingClientRect();
       const breakpoints = calculateBgColorChangeRanges(
         logoRevealDistance,
-        projects,
+        portfolioList,
         card.width
       );
       setBreakpoints(breakpoints);
@@ -82,11 +54,13 @@ const ProjectCard: React.FC<ProjectCardProps> = () => {
   }, [projectsDistance, logoRevealDistance]);
 
   useEffect(() => {
-    if (activeProject === 3) {
-      videoRef.current.play();
-    } else {
-      videoRef.current.pause();
-    }
+    // console.log(videoRef);
+    videoRef[activeProject]?.play();
+    videoRef[activeProject - 1]?.pause();
+    videoRef[activeProject + 1]?.pause();
+
+    // videoRef?.current.play();
+    // videoRef?.current.pause();
   }, [activeProject]);
 
   return (
@@ -98,24 +72,31 @@ const ProjectCard: React.FC<ProjectCardProps> = () => {
       }}
       className={`flex mt-[10vh]`}
     >
-      {projects.map((project) => (
+      {portfolioList.map((portfolio) => (
         <div
+          key={portfolio.id}
           ref={cardRef}
           className="flex justify-center relative mr-[3vw] z-0 w-full items-center"
         >
           <p
-            className={`absolute  font-averta text-white font-extrabold text-5xl text-center transition duration-1000 ${
-              project.id === activeProject ? "opacity-100" : "opacity-0"
+            className={`absolute  font-averta text-black font-extrabold text-5xl text-center transition duration-1000 ${
+              portfolio.id === activeProject ? "opacity-100" : "opacity-0"
             }`}
           >
-            {project.name}
+            {portfolio.projectName}
           </p>
-          <video className="w-[50vw] text-black" ref={videoRef} muted loop>
-            <source
-              src="https://res.cloudinary.com/dsuiwxwkg/video/upload/v1716714006/portfolio1_fo0ld4.mp4"
-              type="video/mp4"
-              className=""
-            />
+          <video
+            className="w-[20vw] text-black"
+            ref={(ref) => {
+              // console.log(ref);
+              videoRef[portfolio.id] = ref;
+            }}
+            // ref={videoRef}
+            muted
+            loop
+            // poster={portfolio.thumbnail.src}
+          >
+            <source src={portfolio.video} type="video/mp4" className="" />
           </video>
           {/* <Image
             src={project.thumbnail}

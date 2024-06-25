@@ -2,7 +2,6 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 import useLogoRevealDistance from "../hooks/logoRevealDistance";
 import useProjectsDistance from "../hooks/projectsDistance";
 import useProjectsContainerWidth from "../hooks/projectsContainerWidth";
-import { IBreakpoints } from "../interfaces/IBreakpoints";
 import useProjectBreakpoints from "../hooks/breakpoints";
 import useActiveProject from "../hooks/activeProject";
 import useDetectScroll from "@smakss/react-scroll-direction";
@@ -10,6 +9,7 @@ import useLogoRevealBottom from "../hooks/logoRevealBottom";
 import useCallToActionDistance from "../hooks/callToActionDistance";
 import useActiveImage from "../hooks/activeImage";
 import Image from "next/image";
+import { dictionary } from "@/app/utils/imageDictionary";
 
 type LogoRevealProps = {
   children: ReactNode;
@@ -59,7 +59,7 @@ const LogoReveal: React.FC<LogoRevealProps> = ({ children }) => {
       }
     }
   }, [callToActionDistance]);
-  console.log(activeImage);
+  // console.log(activeImage);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
@@ -141,13 +141,11 @@ const LogoReveal: React.FC<LogoRevealProps> = ({ children }) => {
             : ""
         }`}
       >
-        Logo Reveal
-        {/* <img
-          width={100}
-          height={100}
-          // src="../assets/logo-reveal/04_Render Comp_1_00001"
-          alt="logo reveal image"
-        /> */}
+        <Image
+          className="h-screen w-screen"
+          src={dictionary[activeImage]}
+          alt=""
+        />
       </div>
     </>
   );

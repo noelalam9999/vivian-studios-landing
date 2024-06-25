@@ -11,7 +11,6 @@ import CallToAction from "./components/CallToAction";
 import { Suspense, useRef } from "react";
 
 import ErrorBoundary from "./error";
-import useProjectsDistance from "./hooks/projectsDistance";
 import NonStickyProjectList from "./components/NonStickyProjectList";
 
 export default function Home() {
@@ -24,8 +23,6 @@ export default function Home() {
         <Suspense fallback={<>Loading...</>}>
           <RevealShowreel />
         </Suspense>
-        {/* <div className={`${distance < 0 ? "sticky top-0" : ""} `}> */}
-
         <ProjectList>
           <ProjectCard></ProjectCard>
         </ProjectList>

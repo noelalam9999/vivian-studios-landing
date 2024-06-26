@@ -4,6 +4,7 @@ import Mission from "../../components/Services/Mission";
 import FeaturedProject from "../../components/Services/FeaturedProject";
 import SubServices from "../../components/Services/SubServices";
 import OtherProjects from "../../components/Services/OtherProjects";
+import ContactUs from "@/app/components/Services/ContactUs";
 
 type pageProps = {};
 
@@ -15,6 +16,7 @@ const page: React.FC<pageProps> = () => {
       <FeaturedProject></FeaturedProject>
       <SubServices></SubServices>
       <OtherProjects></OtherProjects>
+      <ContactUs></ContactUs>
     </>
   );
 };

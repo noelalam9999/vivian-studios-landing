@@ -55,4 +55,5 @@ const HeroBanner = React.forwardRef<HTMLDivElement | null, Props>(
     );
   }
 );
+HeroBanner.displayName = "Hero Banner";
 export default HeroBanner;

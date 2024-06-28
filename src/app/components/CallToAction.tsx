@@ -19,26 +19,13 @@ const CallToAction: React.FC<CallToActionProps> = () => {
 
   function handleScroll() {
     const top = ref?.current?.getBoundingClientRect();
-    setCallToActionDistance(top?.top);
   }
 
   useEffect(() => {
-    if (ref) {
-      // greetingAnitmationInterval = setInterval(() => {
-      //   if (yAxisPosition >= 702) {
-      //     console.log("inside");
-      //     setYAxisPosition(1);
-      //   } else {
-      //     setYAxisPosition((prev) => prev + 4);
-      //   }
-      // }, 50);
-    }
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       if (ref.current) {
         window.removeEventListener("scroll", handleScroll, true);
-        // clearInterval(greetingAnitmationInterval);
       }
     };
   }, []);
@@ -55,23 +42,13 @@ const CallToAction: React.FC<CallToActionProps> = () => {
 
   return (
     <div>
-      <div style={{ height: `${maxQuantity * 9}px` }} className="bg-black">
-        Height for buffer
-      </div>
-      <div ref={ref} className="bg-white h-screen w-screen">
-        <Image
-          className="h-screen w-screen"
-          src={dictionary[activeImage]}
-          alt=""
-        />
-      </div>
       <div className=" h-screen w-screen z-20 text-white  bg-black relative flex flex-col items-center">
         <div className=" h-[100%] w-[100%] flex justify-center items-center flex-col">
           <p className="font-averta text-7xl font-extrabold mb-[5vh]">
             drop us a message
           </p>
           <p className="font-averta text-7xl font-extrabold">
-            let's stylize your brand
+            let&apos;s stylize your brand
           </p>
         </div>
 

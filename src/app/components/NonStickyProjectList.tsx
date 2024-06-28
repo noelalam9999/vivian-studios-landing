@@ -32,4 +32,6 @@ const NonStickyProjectList = React.forwardRef<HTMLDivElement | null, Props>(
     );
   }
 );
+
+NonStickyProjectList.displayName = "Non Sticky Project List";
 export default NonStickyProjectList;

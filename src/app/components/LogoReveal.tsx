@@ -17,10 +17,13 @@ type LogoRevealProps = {
 
 const LogoReveal: React.FC<LogoRevealProps> = ({ children }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const finalFrameRef = useRef<HTMLDivElement>(null);
   const logoRevealSection = useRef<HTMLDivElement>(null);
 
   const [replacementComponentHeight, setReplacementComponentHeight] =
     useState<number>(0);
+
+  const [fillerHeight, setFillerHeight] = useState(0);
 
   const { logoRevealDistance, setLogoRevealDistance }: any =
     useLogoRevealDistance();
@@ -33,13 +36,13 @@ const LogoReveal: React.FC<LogoRevealProps> = ({ children }) => {
 
   const { logoRevealBottom, setLogoRevealBottom }: any = useLogoRevealBottom();
 
-  const { callToActionDistance }: any = useCallToActionDistance();
+  const { callToActionDistance, setCallToActionDistance }: any =
+    useCallToActionDistance();
 
   const { scrollDir } = useDetectScroll();
 
-  const { activeImage }: any = useActiveImage();
-
-  const { increaseNumber, decreaseNumber }: any = useActiveImage();
+  const { increaseNumber, decreaseNumber, maxQuantity, activeImage }: any =
+    useActiveImage();
 
   const { setActiveProject }: any = useActiveProject();
 
@@ -47,9 +50,19 @@ const LogoReveal: React.FC<LogoRevealProps> = ({ children }) => {
     const top = ref?.current?.getBoundingClientRect();
     setLogoRevealDistance(top?.top);
     setLogoRevealBottom(top?.bottom);
+    setCallToActionDistance(finalFrameRef.current?.getBoundingClientRect().top);
   }
 
   useEffect(() => {
+    // console.log(scrollDir);
+    if (
+      logoRevealSection.current?.getBoundingClientRect().top === 0 &&
+      finalFrameRef?.current?.getBoundingClientRect().top &&
+      fillerHeight === 0
+    ) {
+      setFillerHeight(finalFrameRef?.current?.getBoundingClientRect().top);
+    }
+
     if (logoRevealBottom <= 0) {
       if (scrollDir === "down") {
         increaseNumber();
@@ -58,7 +71,7 @@ const LogoReveal: React.FC<LogoRevealProps> = ({ children }) => {
         decreaseNumber();
       }
     }
-  }, [callToActionDistance]);
+  }, [finalFrameRef.current?.getBoundingClientRect().top]);
   // console.log(activeImage);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -120,6 +133,8 @@ const LogoReveal: React.FC<LogoRevealProps> = ({ children }) => {
     }
   }, [logoRevealDistance]);
 
+  // console.log(fillerHeight);
+
   return (
     <>
       <div
@@ -133,14 +148,23 @@ const LogoReveal: React.FC<LogoRevealProps> = ({ children }) => {
       <div ref={ref} className="h-screen w-screen z-0">
         {projectsDistance <= 0 && logoRevealDistance > 0 ? "" : children}
       </div>
+
       <div
         ref={logoRevealSection}
-        className={`h-screen w-screen  bg-black z-0 text-white ${
-          logoRevealBottom <= 0 && callToActionDistance > 0
-            ? "sticky top-0"
-            : ""
+        className={`h-screen w-screen bg-black z-0 text-white ${
+          callToActionDistance > 0 ? "sticky top-0" : ""
         }`}
       >
+        <Image
+          className="h-screen w-screen"
+          src={dictionary[activeImage]}
+          alt=""
+        />
+      </div>
+      <div style={{ height: `${maxQuantity}px` }} className="bg-black">
+        Height for buffer
+      </div>
+      <div ref={finalFrameRef} className="bg-white h-screen w-screen">
         <Image
           className="h-screen w-screen"
           src={dictionary[activeImage]}

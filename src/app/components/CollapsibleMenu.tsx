@@ -94,7 +94,7 @@ const CollapsibleMenu: React.FC<CollapsibleMenuProps> = () => {
 
           <div className="w-[15vw] flex flex-col justify-start">
             <div className="font-averta text-slate-300 font-bold mb-[1vh]">
-              Hey there, we're everywhere
+              Hey there, we&apos;re everywhere
             </div>
             <div className="flex flex-col items-start font-averta text-2xl">
               <div className="flex justify-between w-full mb-[1vh]">

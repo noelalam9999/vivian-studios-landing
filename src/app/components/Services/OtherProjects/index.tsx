@@ -13,8 +13,7 @@ const OtherProjects: React.FC<OtherProjectsProps> = () => {
 
   const [thumbHeight, setThumbHeight] = useState(1);
   const [imagesBottom, setImagesBottom] = useState(1);
-  const [imagesHeight, setImagesHeight] = useState(1);
-  let i = 0;
+
   useEffect(() => {
     if (thumbRef?.current?.getBoundingClientRect().bottom) {
       setThumbHeight(
@@ -25,6 +24,7 @@ const OtherProjects: React.FC<OtherProjectsProps> = () => {
       setImagesBottom(imagesRef?.current?.getBoundingClientRect().bottom);
     }
   }, []);
+
   function handleScroll() {
     if (imagesRef?.current?.getBoundingClientRect().bottom) {
       setImagesBottom(imagesRef?.current?.getBoundingClientRect().bottom);
@@ -40,8 +40,6 @@ const OtherProjects: React.FC<OtherProjectsProps> = () => {
       }
     };
   }, []);
-
-  // console.log(thumbBottom, imagesBottom);
 
   return (
     <>
